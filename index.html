@@ -473,6 +473,19 @@ body{letter-spacing:0}
 @media print{.tip{display:none!important}.dash{gap:7px}.wg{padding:7px 9px;gap:3px}.wg h4{font-size:10.5px}.ax{font-size:9px}.lg{font-size:8.5px}.wg .nt{font-size:8.5px}.rings .dn{width:74px}.wtw{grid-template-columns:90px 1fr}.wtw .dn{width:90px}.wli{font-size:9.5px;padding:2px 4px}.wdet{font-size:9px;min-height:0}.ctr2 .dn{width:92px}.fcols{height:96px;padding-top:12px}.bq{gap:5px}.bqr>b,.stkr b{font-size:10px}.tr2{height:8px}.stkb{height:16px}.stk{gap:5px}.fcols+.lg{margin-top:16px}.mini2{display:none}.bq[data-v=n] .bqb.r{display:grid}#tdash .sub,#mdash .sub{display:none}}
 .ch{direction:ltr}.wg h4 .srcs{flex:none;display:inline-flex;gap:2px}.wg h4 .sref{margin:0}
 .fcols+.lg{margin-top:26px}
+/* glass mark on the cover */
+.cover{background:linear-gradient(170deg,#010126 0%,#010126 38%,#002aad 100%)}
+.cover::before{display:none}
+.glass{position:absolute;top:50%;inset-inline-end:4%;width:min(46%,560px);aspect-ratio:1;transform:translateY(-50%);perspective:900px;pointer-events:none}
+.glass svg{width:100%;height:100%;display:block;overflow:visible;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;animation:gfloat 7s ease-in-out infinite}
+@keyframes gfloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media(prefers-reduced-motion:reduce){.glass svg{animation:none}}
+@media(max-width:700px){.glass{opacity:.35;width:80%;inset-inline-end:-18%}}
+@media print{.glass svg{animation:none;transform:none}.cover{background:linear-gradient(170deg,#010126 0%,#010126 38%,#002aad 100%)!important}}
+.glass{width:min(42%,520px);inset-inline-end:5%}
+.cover h1,.cover p,.cover .big{max-width:56%}
+@media(max-width:700px){.cover h1,.cover p,.cover .big{max-width:none}}
+@media print{.glass{top:30mm;transform:none;width:120mm;height:120mm;inset-inline-end:14mm}.cover h1,.cover p,.cover .big{max-width:58%}}
 </style>
 </head>
 <body>
@@ -557,7 +570,19 @@ const EVC=['ev0','ev1','ev2','ev3','ev4'];
 const evc=c=>{const i=D.evid[L].findIndex(e=>e[0]==c);return EVC[i<0?4:i]};
 const cfc=c=>/High|عالية/.test(c)?'hi':/Medium|متوسطة/.test(c)?'md':'lo';
 
-function cover(){const M=D.meta[L];return `<section class="slide cover" id="cover"><svg class="mark" viewBox="-2 -2 131.7 131.7" aria-hidden="true"><path fill="#002aad" d="${D.icon}"/></svg><div class="ctop"><svg class="logo" viewBox="0 0 1800 528"><g transform="translate(0,528) scale(.1,-.1)" fill="currentColor">${LOGO}</g></svg><span class="cbadge">${esc(D.conf[L])}</span></div><p class="kick">${L=='ar'?'إدارة تطوير الأعمال':'Business Development'}</p><div class="big">${L=='ar'?'فلك <span>2027</span>':'Falak <span>2027</span>'}</div><h1>${L=='ar'?'استراتيجية تطوير الأعمال والنمو':'Business Development & Growth Strategy'}</h1><p>${esc(M.sub)}</p><div class="rule"></div><div class="meta"><span>${esc(M.by)}</span><span>${esc(D.updated[L])}</span></div></section>`}
+function cover(){const M=D.meta[L];return `<section class="slide cover" id="cover"><div class="glass" id="glass" aria-hidden="true"><svg viewBox="-270 -270 540 540"><defs>
+<linearGradient id="gF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efefef" stop-opacity=".34"/><stop offset=".45" stop-color="#efefef" stop-opacity=".1"/><stop offset="1" stop-color="#009eff" stop-opacity=".26"/></linearGradient>
+<linearGradient id="gS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efefef" stop-opacity=".18"/><stop offset="1" stop-color="#002aad" stop-opacity=".45"/></linearGradient>
+<linearGradient id="gE" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efefef" stop-opacity=".95"/><stop offset=".5" stop-color="#efefef" stop-opacity=".35"/><stop offset="1" stop-color="#00e8fc" stop-opacity=".8"/></linearGradient>
+<linearGradient id="gH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efefef" stop-opacity=".55"/><stop offset=".35" stop-color="#efefef" stop-opacity="0"/></linearGradient>
+<filter id="gB" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+<path id="gM" d="M-33.0 -200.0 L33.0 -200.0 L33.0 -40.0 L-40.0 33.0 L-200.0 33.0 L-200.0 -33.0 L-33.0 -33.0Z M-33.0 200.0 L-33.0 40.0 L40.0 -33.0 L200.0 -33.0 L200.0 33.0 L33.0 33.0 L33.0 200.0Z M-168.3 -135.8 L-135.8 -168.3 L-69.3 -101.8 L-101.8 -69.3Z M135.8 -168.3 L168.3 -135.8 L101.8 -69.3 L69.3 -101.8Z M-101.8 69.3 L-69.3 101.8 L-135.8 168.3 L-168.3 135.8Z M69.3 101.8 L101.8 69.3 L168.3 135.8 L135.8 168.3Z"/></defs>
+<use href="#gM" fill="#009eff" opacity=".45" filter="url(#gB)"/>
+<use href="#gM" transform="translate(18 18)" fill="url(#gS)" stroke="#efefef" stroke-opacity=".35" stroke-width="1.2" stroke-linejoin="round"/><use href="#gM" transform="translate(16 16)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.26" stroke-width=".8"/><use href="#gM" transform="translate(14 14)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.24000000000000002" stroke-width=".8"/><use href="#gM" transform="translate(12 12)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.22" stroke-width=".8"/><use href="#gM" transform="translate(10 10)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.2" stroke-width=".8"/><use href="#gM" transform="translate(8 8)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.18" stroke-width=".8"/><use href="#gM" transform="translate(6 6)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.16" stroke-width=".8"/><use href="#gM" transform="translate(4 4)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.14" stroke-width=".8"/><use href="#gM" transform="translate(2 2)" fill="#009eff" fill-opacity=".05" stroke="#efefef" stroke-opacity="0.12000000000000001" stroke-width=".8"/>
+<use href="#gM" fill="url(#gF)" stroke="url(#gE)" stroke-width="2" stroke-linejoin="round"/>
+<use href="#gM" fill="url(#gH)"/>
+<use href="#gM" transform="translate(-2.5 -2.5)" fill="none" stroke="#efefef" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="40 900"/>
+</svg></div><div class="ctop"><svg class="logo" viewBox="0 0 1800 528"><g transform="translate(0,528) scale(.1,-.1)" fill="currentColor">${LOGO}</g></svg><span class="cbadge">${esc(D.conf[L])}</span></div><p class="kick">${L=='ar'?'إدارة تطوير الأعمال':'Business Development'}</p><div class="big">${L=='ar'?'فلك <span>2027</span>':'Falak <span>2027</span>'}</div><h1>${L=='ar'?'استراتيجية تطوير الأعمال والنمو':'Business Development & Growth Strategy'}</h1><p>${esc(M.sub)}</p><div class="rule"></div><div class="meta"><span>${esc(M.by)}</span><span>${esc(D.updated[L])}</span></div></section>`}
 function slideName(id){const p=D.projects.find(x=>x.id==id);if(p)return tab(p);const m={glance:U[L].glance,patterns:U[L].pat,problems:U[L].psL,system:U[L].sysL,checker:U[L].ckL,macro:D.mkt[L].t1,finance:D.mkt[L].t2,riyadh:D.mkt[L].t3,consult:D.mkt[L].t4,positioning:U[L].posL,tdash:L=='ar'?'لوحة المنافسات':'Tender dashboard',mdash:L=='ar'?'لوحة السوق':'Market dashboard',expansion:U[L].expL,growth:U[L].dashL,plan:U[L].plan,sources:U[L].src};return m[id]||id}
 function contents(){const u=U[L];return `<section class="slide" id="contents">${lbl(u.toc)}<h2>${u.tocT}</h2><ol class="toc">${PARTS.map((p,i)=>`<li><a href="#${p[0]}"><span class="tn serif">${String(i+1).padStart(2,'0')}</span><b>${u.parts[i]}</b></a><div class="tsub">${p[1].map(id=>`<a href="#${id}">${esc(slideName(id))}</a>`).join('')}</div></li>`).join('')}</ol><div class="note">${esc(D.meta[L].scope)}</div><p class="nt" style="margin-top:8px">${esc(D.conf_note[L])}</p>${foot()}</section>`}
 function glance(){const u=U[L];return `<section class="slide" id="glance">${lbl(u.glance)}<h2>${u.glanceT}</h2><div class="scope"><b>${u.scopeT}</b><span>${esc(D.meta[L].scope)}</span></div><div class="tiles">${D.kpis.map((k,i)=>tile([k.v,k[L],k['d_'+L]],i==0).replace('<div class="t','<a href="#'+['sdaia','patterns','patterns','tdf-acc'][i]+'" title="'+u.goKpi+'" class="tlink t').replace(/<\/div>$/,'</a>')).join('')}</div>
@@ -768,6 +793,7 @@ deck.addEventListener('click',e=>{
   if(window.claude){copyTxt(txt);return}
   try{const b=new Blob([txt],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast(U[L].saved)}catch(x){copyTxt(txt)}return}
 });
+deck.addEventListener('pointermove',e=>{const c=e.target.closest('#cover');const g=$('glass');if(!g||RM)return;if(!c){g.style.removeProperty('--rx');g.style.removeProperty('--ry');return}const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;g.style.setProperty('--ry',(x*14)+'deg');g.style.setProperty('--rx',(-y*14)+'deg')});
 function showTip(el,e){const t=$('tip');t.textContent=el.dataset.tip;if(!t.textContent)return;t.hidden=false;const w=t.offsetWidth,h=t.offsetHeight;let x=e.clientX-w/2,y=e.clientY-h-14;if(y<6)y=e.clientY+18;t.style.left=Math.max(6,Math.min(innerWidth-w-6,x))+'px';t.style.top=y+'px'}
 deck.addEventListener('mousemove',e=>{const el=e.target.closest('[data-tip]');if(el&&el.dataset.tip)showTip(el,e);else $('tip').hidden=true});
 deck.addEventListener('mouseleave',()=>$('tip').hidden=true);
